@@ -1,0 +1,40 @@
+﻿<channel>
+
+    <item>
+        <title>FreeMarker的标签</title>
+        <link>http://www.cnblogs.com/mediocreWorld/archive/2019/11/14/11859092.html</link>
+        <creator>mediocrePeople</creator>
+        <author>mediocrePeople</author>
+        <pubDate>Thu, 14 Nov 2019 09:51:00 GMT</pubDate>
+        <guid>http://www.cnblogs.com/mediocreWorld/archive/2019/11/14/11859092.html</guid>
+        <description>
+            <![CDATA[<p>&nbsp;</p>
+<p>&lt;#if (str1?? &amp;&amp; str1!='') || (str2?? &amp;&amp; str2!='')&gt;</p>
+<p>　　xxx</p>
+<p>&lt;/#if&gt;</p>
+<p>&nbsp;</p>
+<p>str1??： 变量str1不为null，则为真，执行&lt;#if&gt;中的内容；</p>
+<p>str1!=''： 变量str1不是空字符串，则为真，执行&lt;#if&gt;中的内容；</p>
+<p>|| ： 或，和java、js中 的用法相同。</p>
+<p>&nbsp;</p>]]>
+        </description>
+    </item>
+    <item>
+        <title>拷贝本地文件到远程服务器的批处理脚本</title>
+        <link>http://www.cnblogs.com/mediocreWorld/archive/2018/12/05/10068524.html</link>
+        <creator>mediocrePeople</creator>
+        <author>mediocrePeople</author>
+        <pubDate>Tue, 04 Dec 2018 16:32:00 GMT</pubDate>
+        <guid>http://www.cnblogs.com/mediocreWorld/archive/2018/12/05/10068524.html</guid>
+        <description><![CDATA[<p>测试过没问题，只要按照如下形式写就行，&nbsp;如有必要，再设置一个定时计划任务即可：</p>
+<p>&nbsp;</p>
+<p>@echo off</p>
+<p>@echo 数据库每日备份到远程服务器任务开始......</p>
+<p>net use Z: /del</p>
+<p>net use Z: \\30.114.67.73\SharedFolder "2" /user:"user"</p>
+<p>xcopy D:\dir1\* Z:\test /d/e/j/f/v/k/h/y/z</p>
+<p>net use Z: /del</p>
+<p>@echo 数据库每日备份到远程服务器任务结束......</p>
+<p>&nbsp;</p>]]></description>
+    </item>
+</channel>

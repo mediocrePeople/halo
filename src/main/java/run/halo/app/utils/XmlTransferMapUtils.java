@@ -33,6 +33,7 @@ public class XmlTransferMapUtils {
             Document document = saxReader.read(fileInputStream);
             return document.getRootElement();
         } catch (Exception e) {
+            e.printStackTrace();
             throw new RuntimeException("can not get root element");
         }
     }

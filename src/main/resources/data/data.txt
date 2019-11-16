@@ -1,0 +1,90 @@
+INSERT INTO CATEGORIES(NAME, SLUG_NAME, DESCRIPTION )
+VALUES
+('ActiveMQ','ActiveMQ','包含于Hadoop生态圈'),
+('Azkaban','Azkaban','包含于Hadoop生态圈' ),
+('BigData','BigData','属于大数据内容，但不属于其他任何框架/组件的分类'),
+('DOS','DOS',''),
+('Eclipse&IDEA','Eclipse&IDEA',''),
+('FineReport','FineReport','帆软报表'),
+('Flume','Flume','包含于Hadoop生态圈'),
+('FreeMarker','FreeMarker',''),
+('H2','H2',''),
+('Hadoop','Hadoop','包含于Hadoop生态圈'),
+('HBase','HBase','包含于Hadoop生态圈'),
+('HDFS','HDFS','包含于Hadoop生态圈'),
+('Hibernate','Hibernate',''),
+('Hive','Hive','包含于Hadoop生态圈'),
+('HUE','HUE','包含于Hadoop生态圈'),
+('Impala','Impala','和hive相同的功能，但是快得多'),
+('JavaEE','JavaEE',''),
+('JavaSE','JavaSE',''),
+('JVM','JVM',''),
+('Kafka','Kafka','包含于Hadoop生态圈'),
+('Kudu','Kudu',''),
+('Linux','Linux',''),
+('MapReduce','MapReduce','包含于Hadoop生态圈'),
+('Maven','Maven',''),
+('MSOffice','MSOffice',''),
+('MyBatis','MyBatis',''),
+('MySQL','MySQL',''),
+('Netty','Netty',''),
+('Newwork','Newwork',''),
+('Office','Office',''),
+('Oozie','Oozie','包含于Hadoop生态圈'),
+('Oracle','Oracle',''),
+('Others','Others','包括其他杂七杂八的东东'),
+('Projects','Projects','各种项目和案例'),
+('RabbitMQ','RabbitMQ',''),
+('Redis','Redis',''),
+('Scala','Scala',''),
+('Spark','Spark','包含于Hadoop生态圈'),
+('Spring','Spring',''),
+('SpringBoot','SpringBoot',''),
+('SpringCloud','SpringCloud',''),
+('SpringMVC','SpringMVC',''),
+('Sqoop','Sqoop','包含于Hadoop生态圈'),
+('Storm','Storm','包含于Hadoop生态圈'),
+('Struts','Struts',''),
+('todo','todo',''),
+('VCS','VCS','版本控制工具'),
+('WebService','WebService',''),
+('Windows','Windows',''),
+('Yarn','Yarn',''),
+('Zookeeper','Zookeeper','包含于Hadoop生态圈'),
+('设计模式','设计模式',''),
+('问题','问题','日常学习工作中遇到的问题及解决方法');
+
+
+alter table POST_CATEGORIES
+  add constraint POST_CATEGORIES_UK
+    unique (POST_ID, CATEGORY_ID);
+
+INSERT INTO POST_CATEGORIES(CATEGORY_ID,POST_ID)
+SELECT A.ID CATEGORY_ID,B.ID POST_ID FROM CATEGORIES A
+JOIN POSTS B ON LOWER(B.TITLE) LIKE '%' || LOWER(A.SLUG_NAME) || '%';
+
+INSERT INTO POSTS(CREATE_TIME,UPDATE_TIME,EDIT_TIME,FORMAT_CONTENT, ORIGINAL_CONTENT,STATUS,TITLE,URL)
+VALUES (0,title,url),();
+
+INSERT INTO PUBLIC.POST_CATEGORIES (POST_ID,CATEGORY_ID)
+VALUES (28,49),(32,14),(34,31),(37,31),(38,31),(39,56),(40,31),(41,31),(46,30),(47,56),
+    (51,38),(53,14),(55,14),(56,47),(68,14),(69,42),(70,14),(71,26),(72,26),(74,42),
+    (91,62),(100,39),(103,14),(104,46),(108,62),(111,26),(124,42),(125,62),(134,62),
+     (135,31),(140,62),(141,27),(148,14),(149,14),(168,12),(172,39),(173,62),(176,12),
+     (185,31),(190,62),(202,31),(203,43),(204,43),(205,43),(206,43),(207,43),
+     (208,43),(209,43),(210,43),(211,43),(213,43),(214,43),(215,43),(216,43),
+     (217,43),(222,62),(238,62),(253,27),(253,62),(271,13),(287,42),(289,42),
+     (294,14),(314,12),(315,31),(318,13);
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -64,3 +64,6 @@ nbdist/
 
 ### VSCode
 .vscode
+
+#application-user.yaml
+*/application-user.yaml

@@ -10,6 +10,7 @@ import run.halo.app.Application;
 import run.halo.app.model.entity.Post;
 import run.halo.app.model.enums.PostStatus;
 import run.halo.app.service.impl.PostServiceImpl;
+import run.halo.app.utils.MarkdownUtils;
 import run.halo.app.utils.XmlTransferMapUtils;
 
 import java.io.*;
@@ -40,7 +41,7 @@ public class ImpXmlTest {
      * 导入博客园的备份文章到halo系统
      * @throws ParseException
      */
-    @Test
+//    @Test
     public void impArticles() throws ParseException {
 //        String userHome = System.getProperty("user.home");
         System.out.println("文章开始导入！");
@@ -118,7 +119,7 @@ public class ImpXmlTest {
      * http://mediocrepeople.tpddns.cn:9999/upload/2019/11/1f44d-5fd5044c1e164476a09accf364039553.png
      *
      */
-    @Test
+//    @Test
     public void impImages() throws IOException {
         System.out.println("图片开始导入！");
 
@@ -190,6 +191,36 @@ public class ImpXmlTest {
         System.out.println("所有图片url都导入成功！共计处理了 " + k + " 篇文章、 "+ j +" 个图片url！");
     }
 
+
+    /**
+     * 将POSTS表中的ORIGINAL_CONTENT从html格式转换为markdown格式
+     */
+//    @Test
+    public void renderHtmlToMd(){
+        System.out.println("文章初始内容转换开始！");
+        List<Post> posts = postService.listAllBy(PostStatus.PUBLISHED);
+        int i = 0;
+
+        for (Post post : posts) {
+            //如果original_content字段中包含如下格式<p></p>，则进行转换，否则不用转换：
+            //      <p class="md-end-block md-p"><span class="md-plain">密码 (x, 表示加密的密码)</span></p>
+            String regex = "(<p.*?>.*?</p>)|(<div.*?>.*?</div>)|(<pre.*?>.*?</pre>)";
+            Pattern p = Pattern.compile(regex);
+            Matcher m = p.matcher(post.getOriginalContent());
+
+            if(m.find()){
+//                System.out.println("文章" + (++i) + ": ");
+//                System.out.println(post.getOriginalContent());
+//                System.out.println();
+                post.setOriginalContent(MarkdownUtils.renderMarkdown(post.getOriginalContent()));
+                Post updatedPost = postService.createOrUpdateBy(post);
+                if (updatedPost == null) throw new RuntimeException("文章初始内容失败！");
+                i++;
+            }
+        }
+        System.out.println("所有文章的初始内容都转换完成！共计转换篇"+i+"文章！");
+    }
+
     /**
      * 从网络Url中下载文件
      * @param urlStr
@@ -197,7 +228,7 @@ public class ImpXmlTest {
      * @param savePath
      * @throws IOException
      */
-    public static void  downLoadFromUrl(String urlStr,String fileName,String savePath,String token) throws IOException{
+    public void downLoadFromUrl(String urlStr,String fileName,String savePath,String token) throws IOException{
         URL url = new URL(urlStr);
         HttpURLConnection conn = (HttpURLConnection)url.openConnection();
         //设置超时间为3秒
@@ -238,7 +269,7 @@ public class ImpXmlTest {
      * @return
      * @throws IOException
      */
-    public static  byte[] readInputStream(InputStream inputStream) throws IOException {
+    public byte[] readInputStream(InputStream inputStream) throws IOException {
         byte[] buffer = new byte[1024];
         int len = 0;
         ByteArrayOutputStream bos = new ByteArrayOutputStream();

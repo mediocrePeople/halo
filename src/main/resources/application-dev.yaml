@@ -5,6 +5,8 @@ server:
     enabled: false
     mime-types: application/javascript,text/css,application/json,application/xml,text/html,text/xml,text/plain
 spring:
+  thymeleaf:
+    cache: false
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
   output:

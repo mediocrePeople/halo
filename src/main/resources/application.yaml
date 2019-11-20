@@ -6,7 +6,7 @@ server:
     mime-types: application/javascript,text/css,application/json,application/xml,text/html,text/xml,text/plain
 spring:
   profiles:
-    active: dev  #设置选择哪个yaml文件的配置，比如此处是选择application-test.yaml
+    active: user  #设置选择哪个yaml文件的配置，比如此处是选择application-user.yaml
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
   devtools:

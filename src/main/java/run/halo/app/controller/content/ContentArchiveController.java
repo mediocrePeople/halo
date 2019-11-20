@@ -95,7 +95,7 @@ public class ContentArchiveController {
 
         Page<Post> postPage = postService.pageBy(PostStatus.PUBLISHED, pageable);
         Page<PostListVO> postListVos = postService.convertToListVo(postPage);
-        int[] pageRainbow = PageUtil.rainbow(page, postListVos.getTotalPages(), 3);
+        int[] pageRainbow = PageUtil.rainbow(page, postListVos.getTotalPages(), 5);
 
         model.addAttribute("is_archives", true);
         model.addAttribute("pageRainbow", pageRainbow);

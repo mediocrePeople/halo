@@ -81,7 +81,7 @@ public class ContentJournalController {
 
         Page<Journal> journals = journalService.pageBy(JournalType.PUBLIC, pageable);
 
-        int[] rainbow = PageUtil.rainbow(page, journals.getTotalPages(), 3);
+        int[] rainbow = PageUtil.rainbow(page, journals.getTotalPages(), 10);
 
         model.addAttribute("is_journal", true);
         model.addAttribute("journals", journals);

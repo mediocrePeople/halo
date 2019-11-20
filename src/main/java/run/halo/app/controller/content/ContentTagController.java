@@ -94,7 +94,7 @@ public class ContentTagController {
         final Pageable pageable = PageRequest.of(page - 1, optionService.getPostPageSize(), sort);
         Page<Post> postPage = postTagService.pagePostsBy(tag.getId(), PostStatus.PUBLISHED, pageable);
         Page<PostListVO> posts = postService.convertToListVo(postPage);
-        final int[] rainbow = PageUtil.rainbow(page, posts.getTotalPages(), 3);
+        final int[] rainbow = PageUtil.rainbow(page, posts.getTotalPages(), 5);
 
         model.addAttribute("is_tag", true);
         model.addAttribute("posts", posts);

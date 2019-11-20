@@ -93,7 +93,7 @@ public class ContentCategoryController {
         final Pageable pageable = PageRequest.of(page - 1, optionService.getPostPageSize(), sort);
         Page<Post> postPage = postCategoryService.pagePostBy(category.getId(), PostStatus.PUBLISHED, pageable);
         Page<PostListVO> posts = postService.convertToListVo(postPage);
-        final int[] rainbow = PageUtil.rainbow(page, posts.getTotalPages(), 3);
+        final int[] rainbow = PageUtil.rainbow(page, posts.getTotalPages(), 10);
 
         model.addAttribute("is_category", true);
         model.addAttribute("posts", posts);

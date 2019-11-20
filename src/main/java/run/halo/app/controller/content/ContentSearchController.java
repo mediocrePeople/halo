@@ -73,7 +73,7 @@ public class ContentSearchController {
 
         final Page<PostListVO> posts = postService.convertToListVo(postPage);
 
-        final int[] rainbow = PageUtil.rainbow(page, posts.getTotalPages(), 3);
+        final int[] rainbow = PageUtil.rainbow(page, posts.getTotalPages(), 10);
         model.addAttribute("is_search", true);
         model.addAttribute("keyword", keyword);
         model.addAttribute("posts", posts);

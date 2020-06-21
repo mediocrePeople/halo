@@ -137,14 +137,16 @@ public class PostController {
         postService.removeById(postId);
     }
 
-    @GetMapping("preview/{postId:\\d+}")
+    // 解决后台返回数据到前台出现中文乱码的问题，添加 produces = "application/json;charset=UTF-8"
+    @GetMapping(value = "preview/{postId:\\d+}", produces = "application/json;charset=UTF-8")
     public String preview(@PathVariable("postId") Integer postId) {
         Post post = postService.getById(postId);
 
         String token = IdUtil.simpleUUID();
 
         // cache preview token
-        cacheStore.putAny("preview-post-token-" + postId, token, 10, TimeUnit.MINUTES);
+//        cacheStore.putAny("preview-post-token-" + postId, token, 10, TimeUnit.MINUTES);
+        cacheStore.putAny("preview-post-token-" + postId, token, 1440, TimeUnit.MINUTES);
 
         // build preview post url and return
         return String.format("%s/archives/%s?preview=true&token=%s", optionService.getBlogBaseUrl(), post.getUrl(), token);

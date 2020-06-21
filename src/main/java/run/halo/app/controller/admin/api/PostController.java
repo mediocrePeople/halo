@@ -137,7 +137,7 @@ public class PostController {
         postService.removeById(postId);
     }
 
-    // 解决后台返回数据到前台出现中文乱码的问题，添加 produces = "application/json;charset=UTF-8"
+    // 预览草稿时，解决后台返回json到前台出现中文乱码的问题，添加 produces = "application/json;charset=UTF-8"
     @GetMapping(value = "preview/{postId:\\d+}", produces = "application/json;charset=UTF-8")
     public String preview(@PathVariable("postId") Integer postId) {
         Post post = postService.getById(postId);

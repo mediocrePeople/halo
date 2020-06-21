@@ -1,11 +1,15 @@
 server:
   port: 6666
+  # servlet:
+    # session:
+      # timeout: 30s
   use-forward-headers: true
   compression:
     enabled: false
     mime-types: application/javascript,text/css,application/json,application/xml,text/html,text/xml,text/plain
 spring:
   profiles:
+#    active: dev  #设置选择哪个yaml文件的配置，比如此处是选择application-dev.yaml
     active: user  #设置选择哪个yaml文件的配置，比如此处是选择application-user.yaml
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
@@ -18,22 +22,23 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     # H2 Database 配置
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:file:~/.halo/db/halo
+    url: jdbc:h2:file:~/.halo/db/halo;CACHE_SIZE=32768
     username: root
-    password: root
+    password: Sji1(@)35
 
     # MySQL 配置
-  #  driver-class-name: com.mysql.cj.jdbc.Driver
-  #  url: jdbc:mysql://127.0.0.1:3306/halo?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
-  #  username: root
-  #  password: root
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://192.168.6.16:3306/halo?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+#    url: jdbc:mysql://127.0.0.1:3306/halo?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+#    username: root
+#    password: root
 
-  h2:
-    console:
-      settings:
-        web-allow-others: false
-      path: /h2-console
-      enabled: false
+#  h2:
+#    console:
+#      settings:
+#        web-allow-others: true
+#      path: /h2-console
+#      enabled: true
   jpa:
     hibernate:
       ddl-auto: update

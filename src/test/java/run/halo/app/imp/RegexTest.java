@@ -29,8 +29,8 @@ public class RegexTest {
 //        str = "<p><img src=\"https://img2018.cnblogs.com/blog/1325651/201905/1325651-20190527222121953-1870246020.png\" alt=\"\" width=\"532\" height=\"710\" />-----<img src=\"https://img2018.cnblogs.com/blog/1325651/201905/1325651-20190527222715205-1033729331.jpg\" alt=\"\" width=\"530\" height=\"708\" /></p>\n<p>&nbsp;</p>";
 
         //正则表达式
-//        String regex = "https://img2018\\.cnblogs\\.com/.*?/1325651/201.*?\\.(png|jpg)";
-        String regex = "<p.*?>.*?</p>";
+        String regex = "https://img2018\\.cnblogs\\.com/.*?/1325651/201.*?\\.(png|jpg)";
+//        String regex = "<p.*?>.*?</p>";
         Pattern p=Pattern.compile(regex);
         Matcher m=p.matcher(str);
         while(m.find()) {

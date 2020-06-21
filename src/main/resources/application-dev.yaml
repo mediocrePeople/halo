@@ -1,44 +1,48 @@
-server:
-  port: 6667
-  use-forward-headers: true
-  compression:
-    enabled: false
-    mime-types: application/javascript,text/css,application/json,application/xml,text/html,text/xml,text/plain
+# server:
+  # port: 6666
+  # use-forward-headers: true
+  # compression:
+    # enabled: false
+    # mime-types: application/javascript,text/css,application/json,application/xml,text/html,text/xml,text/plain
 spring:
   thymeleaf:
     cache: false
-  jackson:
-    date-format: yyyy-MM-dd HH:mm:ss
-  output:
-    ansi:
-      enabled: always
+  # jackson:
+    # date-format: yyyy-MM-dd HH:mm:ss
+  # output:
+    # ansi:
+      # enabled: always
   datasource:
-    type: com.zaxxer.hikari.HikariDataSource
+    # type: com.zaxxer.hikari.HikariDataSource
 
     # H2 Database 配置
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:file:~/halo-dev/db/halo
+#    driver-class-name: org.h2.Driver
+#    url: jdbc:h2:file:~/halo-dev/db/halo
     # url: jdbc:h2:file:E:/Develop/.halo/db/halo
+#    username: roote
+#    password: root
+
+    # MySQL 配置
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/halo?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+#    url: jdbc:mysql://127.0.0.1:3306/halo?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
     username: root
     password: root
 
-    # MySQL 配置
-  #  driver-class-name: com.mysql.cj.jdbc.Driver
-  #  url: jdbc:mysql://127.0.0.1:3306/halodb?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
-  #  username: root
-  #  password: 123456
-
-  h2:
-    console:
-      settings:
-        web-allow-others: true
-      path: /h2-console
-      enabled: true
+#  h2:
+#    console:
+#      settings:
+#        web-allow-others: true
+#      path: /h2-console
+#      enabled: true
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
     open-in-view: false
+    # SrpingBoot 2.0 版本中，Hibernate创建数据表的时候，默认的数据库存储引擎选择的是MyISAM（之前好像是 InnoDB，这点比较诡异）
+    # 这个参数是在建表的时候，将默认的存储引擎切换为 InnoDB 用的
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
   servlet:
     multipart:
       max-file-size: 10240MB

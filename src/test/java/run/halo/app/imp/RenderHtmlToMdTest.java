@@ -13,7 +13,7 @@ public class RenderHtmlToMdTest {
     @Test
     public void test(){
 
-        String html = "      <div id=\"wrapper\">\n" +
+        /*String html = "      <div id=\"wrapper\">\n" +
                 "        <div class=\"article\">\n" +
                 "          <h1>DMP (Data Management Platform)</h1>\n" +
                 "<div id=\"preamble\">\n" +
@@ -2985,11 +2985,10 @@ public class RenderHtmlToMdTest {
                 "</div>\n" +
                 "</div>\n" +
                 "        </div>\n" +
-                "      </div>";
-
+                "      </div>";*/
+        String html = "";
 
         String md = MarkdownUtils.renderMarkdown(html);
-
 
         System.out.println(md);
 
